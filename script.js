@@ -1,24 +1,25 @@
-function convertir() {
-            let input = document.getElementById("celsiusInput").value;
-            let celsius = parseFloat(input);
+function analizarNumeros(){
 
-            if (isNaN(celsius)) {
-                alert("Error: Debes ingresar un numero valido");
-                return;
-            }
-            
-            let fahrenheit = (celsius * 9/5) + 32;
-            let kelvin = celsius + 273.15;
+    let num1 = parseFloat(prompt("Ingresa el pimer numero:"));
+    let num2 = parseFloat(prompt("Ingresa el segundo numero:"));
+    let num3 = parseFloat(prompt("Ingresa el tercer numero:"));
 
-            fahrenheit = fahrenheit.toFixed(2);
+    if (isNaN(num1) || isNaN(num2) || isNaN(num3)) {
+    console.log("Error: debes de ingresar solo números válidos");
+    return;
+    }
 
-            console.log("Grados Celsius:", celsius);
-            console.log("Grados Fahrenheit:", fahrenheit);
-            console.log("Grados Kelvin:", kelvin);
+    if (num1 === num2 && num2 === num3) {
+        console.log("Los tres numeros son iguales:", num1, num2, num3);
+        return;
+    }
 
-           document.getElementById("resultados").innerHTML = `
-           Resultados para ${celsius}°C:<br>
-           Grados Fahrenheit: ${fahrenheit}<br>
-           Grados Kelvin: ${kelvin}
-           `;
-        }
+    let numeros = [num1, num2, num3];
+
+    let menorMayor = [...numeros].sort((a, b) => a - b);
+
+    let mayorMenor = [...numeros].sort((a, b) => b - a);
+
+    console.log("De mayor a menor:", mayorMenor.join(","));
+    console.log("De menor a mayor", menorMayor.join(","));
+    }
